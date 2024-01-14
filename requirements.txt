@@ -1,0 +1,22 @@
+pandas
+mlflow==2.2.2
+notebook
+numpy
+scikit-learn
+matplotlib
+python-box==6.0.2
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-PyYAML
+Flask
+Flask-Cors
+boto3
+mypy-boto3-s3
+fastapi==0.78.0
+uvicorn==0.18.3
+Jinja2==3.1.2
+catboost==1.2.2
+xgboost
+-e .

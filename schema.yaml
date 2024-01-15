@@ -1,0 +1,16 @@
+COLUMNS:
+  id: int64
+  Gender: object
+  Age: int64
+  Driving_License: int64
+  Region_Code: float64
+  Previously_Insured: int64
+  Vehicle_Age: object
+  Vehicle_Damage: object
+  Annual_Premium: float64
+  Policy_Sales_Channel: float64
+  Vintage: int64
+
+
+TARGET_COLUMN:
+  name: response

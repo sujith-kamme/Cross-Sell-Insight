@@ -19,7 +19,6 @@ files=[
     f"src/code/entity/entityconfig.py",
     f"src/code/constants/__init__.py",
     "configs/config.yaml",
-    "dvc.yaml",
     "schema.yaml",
     "param.yaml",
     "app.py",

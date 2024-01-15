@@ -1,21 +1,20 @@
-import os
-import sys
-import logging
+from src.code.logging import LogTool
+from src.code.pipeline.stage1_data_ingestion_and_validation import DataIngestionPipeline, DataValidationPipeline
 
-log="[%(asctime)s: %(levelname)s: %(module)s] %(message)s"
+stage_1="Data Ingestion and Validation"
 
-log_dir = "logs"
-log_filepath = os.path.join(log_dir,"running_logs.log")
-os.makedirs(log_dir, exist_ok=True)
+try:
+    LogTool.info(f"----------- {stage_1} phase started -----------")
+    data_ingestion=DataIngestionPipeline()
+    data_ingestion.run()
+    
+    data_validation=DataValidationPipeline()
+    check=data_validation.run()
+    if check:
+        LogTool.info(f"--------------- {stage_1} finished ---------------")
+    else:
+        LogTool.info(f"--------------- Columns Mismatch. Please check the data file ---------------")
 
-logging.basicConfig(
-    level= logging.INFO,
-    format= log,
-
-    handlers=[
-        logging.FileHandler(log_filepath),
-        logging.StreamHandler(sys.stdout)
-    ]
-)
-
-LogTool = logging.getLogger("CrossSellInsightLogger")
+except Exception as e:
+    LogTool.exception(e)
+    raise e

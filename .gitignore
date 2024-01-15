@@ -128,6 +128,8 @@ ENV/
 env.bak/
 venv.bak/
 venv
+csivenv
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -163,3 +165,7 @@ cython_debug/
 #other
 .DS_Store
 csivenv
+artifacts/*
+__MACOSX
+configs/aws_secret_keys.yaml
+.DS_Store

@@ -4,7 +4,7 @@ Creating a predictive machine learning model to determine customer receptiveness
 
 ## Coding Workflow:
 
-### Project Setup
+##### Project Setup
 1. Virtual environment (venv) created.
 2. Automated project file structure creation - `template.py`.
 3. Updated `requirements.txt` and `setup.py`.
@@ -13,11 +13,11 @@ Creating a predictive machine learning model to determine customer receptiveness
     pip install -r requirements.txt
     ``` 
 
-### Pipelines Implementation
+##### Pipelines Implementation
 1. Implemented custom logging functionality for the project under `src/code/logging/__init__.py`.
 2. Implemented common utility functions under `utils/common.py`.
 
-### Data Ingestion and Validation
+**Data Ingestion and Validation**
 1. Updated `config.yaml`.
 2. Updated `schema.yaml`.
 3. Updated `constants/__init__.py`.

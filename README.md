@@ -46,11 +46,12 @@ Creating a predictive machine learning model to determine customer receptiveness
 6. Updated `main.py` file.
 7. Updated `param.yaml`
 
-**Setup remote access to enable collaboration** - Using DagsHub
-Using MLFlow for 
-1. Experiment Tracking
-2. Upload model to model registry
-3. Model serving
+**Setup remote access to enable collaboration** - with DagsHub
+
+    Used MLFlow for 
+    1. Experiment Tracking
+    2. Upload model to model registry
+    3. Model serving
 
 **Model Evaluation**
 1. Updated `config.yaml`.

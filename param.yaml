@@ -1,1 +1,8 @@
-key: value
+XGBoost:
+  n_estimators: 634
+  max_depth: 14
+  learning_rate: 0.03294432395872222
+  subsample: 0.8390455066398109
+  colsample_bytree: 0.6977593744653845
+  reg_alpha: 0.0017825569379527394
+  reg_lambda: 6.120730108303776e-06

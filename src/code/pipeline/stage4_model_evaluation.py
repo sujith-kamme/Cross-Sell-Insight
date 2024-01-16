@@ -1,26 +1,25 @@
 from src.code.config.config import ConfigurationManager
-from src.code.components.model_training import ModelTrainer
+from src.code.components.model_evaluation import ModelEvaluation
 from src.code.logging import LogTool
-from pathlib import Path
 
+STAGE_NAME = "Model Evaluation"
 
-STAGE_NAME = "Model Training phase"
-
-#model trainer pipeline
-class ModelTrainerTrainingPipeline:
+class ModelEvaluationPipeline:
     def __init__(self):
         pass
 
     def run(self):
         config = ConfigurationManager()
-        model_trainer_config = config.get_model_trainer_config()
-        model_trainer_config = ModelTrainer(config=model_trainer_config)
-        model_trainer_config.train()
+        model_evaluation_config = config.get_model_evaluation_config()
+        model_evaluation_config = ModelEvaluation(config=model_evaluation_config)
+        model_evaluation_config.setup_mlflow()
+
+
 
 if __name__ == '__main__':
     try:
         LogTool.info(f"------------- {STAGE_NAME} started -------------")
-        obj = ModelTrainerTrainingPipeline()
+        obj = ModelEvaluationPipeline()
         obj.run()
         LogTool.info(f"------------- {STAGE_NAME} completed -----------")
     except Exception as e:

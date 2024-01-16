@@ -2,6 +2,7 @@ from src.code.logging import LogTool
 from src.code.pipeline.stage1_data_ingestion_and_validation import DataIngestionPipeline, DataValidationPipeline
 from src.code.pipeline.stage2_data_transformation import DataTransformationTrainingPipeline
 from src.code.pipeline.stage3_model_training import ModelTrainerTrainingPipeline
+from src.code.pipeline.stage4_model_evaluation import ModelEvaluationPipeline
 
 stage_1="Data Ingestion and Validation"
 
@@ -31,7 +32,7 @@ except Exception as e:
         LogTool.exception(e)
         raise e
 
-stage_3 = "Model Trainer stage"
+stage_3 = "Model Training"
 try:
    LogTool.info(f"----------- {stage_3} phase started -----------")
    data_ingestion = ModelTrainerTrainingPipeline()
@@ -40,3 +41,14 @@ try:
 except Exception as e:
         LogTool.exception(e)
         raise e
+
+
+stage_4 = "Model Evaluation"
+try:
+    LogTool.info(f"------------- {stage_4} phase started -------------")
+    obj = ModelEvaluationPipeline()
+    obj.run()
+    LogTool.info(f"------------- {stage_4} phase finished -----------")
+except Exception as e:
+    LogTool.exception(e)
+    raise e

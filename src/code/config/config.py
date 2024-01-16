@@ -1,18 +1,20 @@
 from src.code.constants import *
 from src.code.utils.common import read_yaml, create_directories
 from src.code.entity.entityconfig import (DataIngestionConfig,
-                                            DataValidationConfig, DataTransformationConfig,ModelTrainerConfig)
+                                            DataValidationConfig, DataTransformationConfig,ModelTrainerConfig,ModelEvaluationConfig)
 
 class ConfigurationManager:
     def __init__(
         self,
         config_filepath = CONFIG_FILE_PATH,
         schema_filepath=SCHEMA_FILE_PATH,
-        keys_filepath = KEYS_FILE_PATH
+        keys_filepath = KEYS_FILE_PATH,
+        param_filepath=PARAM_FILE_PATH
         ):
 
         self.config = read_yaml(config_filepath)
         self.schema=read_yaml(schema_filepath)
+        self.param=read_yaml(param_filepath)
         self.keys = read_yaml(keys_filepath)
 
         create_directories([self.config.artifacts_root])
@@ -67,6 +69,7 @@ class ConfigurationManager:
     def get_model_trainer_config(self) -> ModelTrainerConfig:
         config = self.config.model_trainer
         schema =  self.schema.TARGET_COLUMN
+        param=self.param.XGBoost
 
         create_directories([config.root_dir])
 
@@ -75,9 +78,33 @@ class ConfigurationManager:
             train_data_path = config.train_data_path,
             test_data_path = config.test_data_path,
             model_name = config.model_name,
-            target_column = schema.name
-            
+            target_column = schema.name,
+            n_estimators = param.n_estimators,
+            max_depth = param.max_depth,
+            learning_rate = param.learning_rate,
+            subsample = param.subsample,
+            colsample_bytree= param.colsample_bytree,
+            reg_alpha= param.reg_alpha,
+            reg_lambda= param.reg_lambda,
         )
 
         return model_trainer_config
-    
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        schema =  self.schema.TARGET_COLUMN
+        param = self.param.XGBoost
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path = config.model_path,
+            parameters=param,
+            metric_file_name = config.metric_file_name,
+            target_column = schema.name,
+            mlflow_uri="https://dagshub.com/sujith-kamme/Cross-Sell-Insight.mlflow"
+        )
+
+        return model_evaluation_config

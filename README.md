@@ -44,4 +44,30 @@ Creating a predictive machine learning model to determine customer receptiveness
 4. Updated `components/model_training.py`.
 5. Updated `pipeline/stage3_model_training.py`.
 6. Updated `main.py` file.
+7. Updated `param.yaml`
+
+**Setup remote access to enable collaboration** - Using DagsHub
+Using MLFlow for 
+1. Experiment Tracking
+2. Upload model to model registry
+3. Model serving
+
+**Model Evaluation**
+1. Updated `config.yaml`.
+2. Updated `entity/entityconfig.py`.
+3. Updated `src/code/config/config.py`.
+4. Updated `components/model_evaluation.py`.
+5. Updated `pipeline/stage4_model_evaluation.py`.
+6. Setting up MLFlow Tracking URI to enable collaboration
+    Run this to export as env variables:
+
+    ```bash
+
+    export MLFLOW_TRACKING_URI= "https://dagshub.com/sujith-kamme/Cross-Sell-Insight.mlflow"
+
+    export MLFLOW_TRACKING_USERNAME= "sujith-kamme"
+    ```
+7. Updated `main.py` file.
+
+
 

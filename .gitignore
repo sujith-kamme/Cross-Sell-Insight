@@ -169,3 +169,10 @@ artifacts/*
 __MACOSX
 configs/aws_secret_keys.yaml
 .DS_Store
+logs/*
+
+experiments/catboost_info/catboost_training.json
+experiments/catboost_info/learn_error.tsv
+.gitignore
+experiments/catboost_info/learn/events.out.tfevents
+experiments/catboost_info/time_left.tsv

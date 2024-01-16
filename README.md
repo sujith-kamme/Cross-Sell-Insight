@@ -28,7 +28,7 @@ Creating a predictive machine learning model to determine customer receptiveness
 8. Updated `pipeline/stage1_data_ingestion_and_validation.py`.
 9. Updated `main.py` file.
 
-### Data Transformation
+**Data Transformation**
 1. Updated `config.yaml`.
 2. Updated `schema.yaml`.
 3. Updated `entity/entityconfig.py`.

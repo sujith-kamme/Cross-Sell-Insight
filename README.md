@@ -37,3 +37,11 @@ Creating a predictive machine learning model to determine customer receptiveness
 7. Updated `pipeline/stage2_data_transformation.py`.
 8. Updated `main.py` file.
 
+**Model Training**
+1. Updated `config.yaml`.
+2. Updated `entity/entityconfig.py`.
+3. Updated `src/code/config/config.py`.
+4. Updated `components/model_training.py`.
+5. Updated `pipeline/stage3_model_training.py`.
+6. Updated `main.py` file.
+

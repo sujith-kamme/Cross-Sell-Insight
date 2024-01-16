@@ -3,7 +3,7 @@ from src.code.components.data_ingestion import DataIngestion
 from src.code.components.data_validation import DataValidation
 from src.code.logging import LogTool
 
-STAGE_NAME = "Data Ingestion and Validation stage"
+STAGE_NAME = "Data Ingestion and Validation phase"
 
 class DataIngestionPipeline:
     def __init__(self):

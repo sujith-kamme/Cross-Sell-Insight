@@ -17,10 +17,10 @@ data_transformation:
   data_path: artifacts/dataset/Cross Sell Insight dataset/data.csv
 
 model_trainer:
-  root_dir: artifacts/model_trainer
+  root_dir: artifacts/model_training
   train_data_path: artifacts/data_transformation/train.csv
   test_data_path: artifacts/data_transformation/test.csv
-  model_name: model.joblib
+  model_name: xg_boost.joblib
 
 model_evaluation:
   root_dir: artifacts/model_evaluation

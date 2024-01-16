@@ -13,4 +13,4 @@ COLUMNS:
 
 
 TARGET_COLUMN:
-  name: response
+  name: Response

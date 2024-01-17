@@ -12,7 +12,8 @@ class DataTransformationTraining:
 
     def train_test_spliting(self):
         data = pd.read_csv(self.config.data_path)
-        
+        if "id" in data.columns:
+            data=data.drop(["id"],axis=1)
         data=self.transform(data)
         
         train, test = train_test_split(data,random_state=12)
@@ -25,9 +26,8 @@ class DataTransformationTraining:
         LogTool.info(test.shape)
     
     def transform(self,df):
-        le = LabelEncoder()
-        df['Gender']=le.fit_transform(df['Gender'])
-        df['Vehicle_Damage']=le.fit_transform(df['Vehicle_Damage'])
+        df['Gender']=df['Gender'].replace({"Male":0,"Female":1})
+        df['Vehicle_Damage']=df['Vehicle_Damage'].replace({"Yes":1,"No":0})
         df["Vehicle_Age"] = df["Vehicle_Age"].replace({"< 1 Year":0,"1-2 Year":1, "> 2 Years":2})
         return df
     

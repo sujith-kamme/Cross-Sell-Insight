@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Cross Sell Insight</title>
+    <!-- Style -->
+
+    <title>Cross Sell Insight</title>
+  </head>
+  <body>
+  
+  <div class="content">
+    
+    <div class="container">
+      <div class="row align-items-stretch no-gutters contact-wrap">
+        <div class="col-md-12">
+          <div class="form h-100">
+            <h3 align="center">Cross Sell Insights</h3>
+            <form class="mb-5" method="post" id="MLForm" name="MLForm" onsubmit="return false;">
+              <!-- Additional Fields -->
+              <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                  <label for="gender" class="col-form-label">Gender *</label>
+                  <select class="custom-select" id="gender" name="gender">
+                    <option selected>Choose..</option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                  </select>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="age" class="col-form-label">Age *</label>
+                  <input type="text" class="form-control" name="age" id="age" placeholder="Your age">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                  <label for="driving_license" class="col-form-label">Driving License *</label>
+                  <select class="custom-select" id="driving_license" name="driving_license">
+                    <option selected>Choose...</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="region_code" class="col-form-label">Region Code *</label>
+                  <input type="text" class="form-control" name="region_code" id="region_code" placeholder="Your region code">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                  <label for="previously_insured" class="col-form-label">Is Previously Insured? *</label>
+                  <select class="custom-select" id="previously_insured" name="previously_insured">
+                    <option selected>Choose...</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="vehicle_age" class="col-form-label">Vehicle Age *</label>
+                  <select class="custom-select" id="vehicle_age" name="vehicle_age">
+                    <option selected>Choose...</option>
+                    <option value="0"> Less than 1 year </option>
+                    <option value="1">Between 1-2 years</option>
+                    <option value="2">More than 2 years</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                  <label for="vehicle_damage" class="col-form-label">Vehicle Damage *</label>
+                  <select class="custom-select" id="vehicle_damage" name="vehicle_damage">
+                    <option selected>Choose...</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="annual_premium" class="col-form-label">Annual Premium *</label>
+                  <input type="text" class="form-control" name="annual_premium" id="annual_premium" placeholder="Your annual premium">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                  <label for="policy_sales_channel" class="col-form-label">Policy Sales Channel *</label>
+                  <input type="text" class="form-control" name="policy_sales_channel" id="policy_sales_channel" placeholder="Your policy sales channel">
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="vintage" class="col-form-label">Vintage *</label>
+                  <input type="text" class="form-control" name="vintage" id="vintage" placeholder="Your vintage">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <button type="button" onclick="predict()" class="btn btn-primary rounded-0 py-2 px-4">Predict</button>
+                  <span class="submitting"></span>
+                </div>
+              </div>
+            </form>
+
+            <!-- Placeholder for Prediction -->
+            <div id="prediction-message" class="mt-4"></div>
+
+            <div id="form-message-warning mt-4"></div> 
+            <div id="form-message-success">
+              {{prediction_text}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.validate.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    function predict() {
+        var formData = $("#MLForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/predict",
+            data: formData,
+            success: function(response) {
+                $("#prediction-message").html(response.prediction_text);
+            },
+            error: function(error) {
+                console.log("Error:", error);
+            }
+        });
+    }
+</script>
+  </body>
+</html>

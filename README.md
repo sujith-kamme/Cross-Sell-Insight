@@ -1,6 +1,7 @@
 # Cross-Sell-Insight
 
 Creating a predictive machine learning model to determine customer receptiveness to cross-sell pitches.
+![UI](https://github.com/sujith-kamme/Cross-Sell-Insight/assets/142932988/e062a15e-8bcc-48d4-bb18-b7563a3a781f)
 
 ## **Coding Workflow:**
 
@@ -140,5 +141,6 @@ Creating a predictive machine learning model to determine customer receptiveness
     ECR_REPOSITORY_NAME = simple-app
 
 
+<img width="468" alt="CICD" src="https://github.com/sujith-kamme/Cross-Sell-Insight/assets/142932988/73182206-d4e3-4588-8f9e-269bb0b71164">
 
 
